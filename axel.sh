@@ -2,7 +2,7 @@
 
 while true
 do
-    ./dumas.sh
-    echo "dumas stopped with exit code $?.  Respawning.." | ts >&2 
+    cat /dev/ttyACM0 | sed -u '/^\s*$/d' | ./log.sh
+    echo "serial connection broken, reconnecting.." | ts >&2
     sleep 1
 done
