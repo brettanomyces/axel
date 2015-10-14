@@ -9,7 +9,7 @@ function log {
 }
 
 while true; do
-  cat /dev/ttyACM0 | sed -u '/^\s*$/d' | log
+  cat < $serial_port | sed -u '/^\s*$/d' | log
   echo "serial connection broken, reconnecting.." | ts >&2
   sleep 1
 done
