@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
+# data is expected to be output to serial as CSV in the following order
+# frSetTemp, frTemp, fzSetTemp, fzTemp, baffelOpen, compOn, compWait, fanOn, heaterOn, heaterWait
+
+source axel.properties
+
 function log {
   while read line; do
     day=$(date "+%F")
     time=$(date "+%T")
-    echo "$time","$line" >> log/"$day"_hermes.log
+    echo "$time","$line" >> log/"$day"_"$log_name".log
   done
 }
 
